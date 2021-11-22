@@ -13,6 +13,7 @@ import { IconsHeader } from "../../components/IconsHeader/IconsHeader";
 import { api } from "../../services/api";
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
+import { Alert } from "react-native";
 
 export default function LoginScreen({}) {
   const [login, setLogin] = useState("");
@@ -28,6 +29,11 @@ export default function LoginScreen({}) {
         versaoSO: "10",
         idDispositivo: "teste-mobile",
       });
+      if (login !== "rnteste" && password !== "teste-123")
+        Alert.alert("Login Fail  ");
+      else {
+        Alert.alert("Login Sucess  ");
+      }
     } catch (error: any) {
       throw new Error(error);
     }
