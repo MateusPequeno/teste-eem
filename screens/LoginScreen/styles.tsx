@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { Button } from "../../components/Button/Button";
 
 export const Container = styled.View`
   background-color: #0583a4;
@@ -38,13 +39,14 @@ export const PasswordInput = styled.TextInput`
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 `;
-export const BottomButton = styled.TouchableOpacity`
-  background-color: #bdd4da;
-  border-color: #ff0000 !important;
+export const BottomButton = styled(Button)`
+  background-color: #ffffff;
+
   height: 7%;
   width: 90%;
-  border-radius: 5px;
   justify-content: center;
   align-items: center;
   margin-top: 20px;
+  bottom: 6%;
+  position: absolute;
 `;

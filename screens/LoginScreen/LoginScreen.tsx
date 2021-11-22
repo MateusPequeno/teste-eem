@@ -62,7 +62,7 @@ export default function LoginScreen({}) {
         leftText="Esqueci minha senha"
         rightText=" Politica de privacidade"
       />
-      <Button title={"Entrar com o celular"} />
+      <BottomButton title="Entrar com o celular" />
     </Container>
   );
 }
