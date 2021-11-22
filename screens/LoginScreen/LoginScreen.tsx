@@ -5,19 +5,22 @@ import {
   Separator,
   LoginInput,
   PasswordInput,
+  BottomButton,
 } from "./styles";
 import { Button } from "../../components/Button/Button";
 import { LostPassword } from "../../components/LostPassword/LostPassword";
 import { IconsHeader } from "../../components/IconsHeader/IconsHeader";
-import api from "../../services/api";
+import { api } from "../../services/api";
 import { useState } from "react";
+import { StatusBar } from "expo-status-bar";
 
 export default function LoginScreen({}) {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+
   async function handleEnterButtonPress() {
     try {
-      api.post("api/v1/Acesso/login", {
+      await api.post("api/v1/Acesso/login", {
         login: login,
         senha: password,
         nomeApp: "br.com.eem.teste",
@@ -25,13 +28,13 @@ export default function LoginScreen({}) {
         versaoSO: "10",
         idDispositivo: "teste-mobile",
       });
-      console.log("sucess");
     } catch (error: any) {
       throw new Error(error);
     }
   }
   return (
     <Container>
+      <StatusBar style="auto" />
       <IconsHeader
         leftIconName="chevron-back"
         leftIconColor="white"
@@ -52,13 +55,14 @@ export default function LoginScreen({}) {
         placeholderTextColor="#fff"
         onChangeText={(password: string) => setPassword(password)}
       />
-      <Button title="Entrar" onPress={() => {}} />
+      <Button title="Entrar" onPress={handleEnterButtonPress} />
       <LostPassword
         lostPasswordClick={() => {}}
         policyClick={() => {}}
         leftText="Esqueci minha senha"
         rightText=" Politica de privacidade"
       />
+      <Button title={"Entrar com o celular"} />
     </Container>
   );
 }
